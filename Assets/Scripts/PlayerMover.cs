@@ -12,13 +12,13 @@ public class PlayerMover : MonoBehaviour {
 
 	public float playerSpeed = 0.1f;
 
-    public CharacterController characterController;
+	public CharacterController characterController;
 	public SpriteRenderer render;
 	public Animator anim;
 
 	// Use this for initialization
-	void Start () {
-        InputHandler = ConfigurableInput.Instance;
+	void Start() {
+		InputHandler = ConfigurableInput.Instance;
 		InputHandler.SetKey("Up", UpKey, KeyCode.None, KeyCode.None, KeyCode.None);
 		InputHandler.SetKey("Down", DownKey, KeyCode.None, KeyCode.None, KeyCode.None);
 		InputHandler.SetKey("Left", LeftKey, KeyCode.None, KeyCode.None, KeyCode.None);
@@ -34,40 +34,39 @@ public class PlayerMover : MonoBehaviour {
 		InputHandler.OnAxisScanned += HandleAxisScanned;
 	}
 
-	void HandleAxisScanned (string axis, KeyCode modiefier)
-	{
+	void HandleAxisScanned(string axis, KeyCode modiefier) {
 		Debug.Log(axis);
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-        Vector3 moveVector = Vector3.zero;
-    
-		if (InputHandler.GetKey("Up")){
-			moveVector += new Vector3(1,0,-1);
+	void Update() {
+		Vector3 moveVector = Vector3.zero;
+
+		if (InputHandler.GetKey("Up")) {
+			moveVector += new Vector3(0, 0, -1);
 			anim.Play("Back");
-		}
-
-		else if (InputHandler.GetKey("Down")){
-			moveVector += new Vector3(-1,0,1);
+			render.flipX = false;
+		} else if (InputHandler.GetKey("Down")) {
+			moveVector += new Vector3(0, 0, 1);
 			anim.Play("Front");
-		}
-
-		if (InputHandler.GetKey("Left")){
-			moveVector += new Vector3(1,0,1);
 			render.flipX = true;
-		}
-
-		else if (InputHandler.GetKey("Right")){
-			moveVector += new Vector3(-1,0,-1);
+		} else if (InputHandler.GetKey("Left")) {
+			moveVector += new Vector3(1, 0, 0);
+			anim.Play("Back");
+			render.flipX = true;
+		} else if (InputHandler.GetKey("Right")) {
+			moveVector += new Vector3(-1, 0, 0);
+			anim.Play("Front");
 			render.flipX = false;
 		}
 
-		moveVector = moveVector.normalized;
+		// Possible controller input
+		//moveVector += new Vector3(InputHandler.GetAxis("Horizontal") + InputHandler.GetAxis("Vertical"), 0, InputHandler.GetAxis("Horizontal") - InputHandler.GetAxis("Vertical"));
 
-		moveVector += new Vector3(InputHandler.GetAxis("Horizontal") + InputHandler.GetAxis("Vertical"), 0, InputHandler.GetAxis("Horizontal") - InputHandler.GetAxis("Vertical"));
+		// Normalize
+		moveVector = moveVector.normalized;
 		moveVector *= playerSpeed;
 
-        characterController.Move(moveVector);
+		characterController.Move(moveVector);
 	}
 }

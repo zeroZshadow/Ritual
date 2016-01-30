@@ -12,7 +12,9 @@ public class PlayerMover : MonoBehaviour {
 
 	public float playerSpeed = 0.1f;
 
-    private CharacterController characterController;
+    public CharacterController characterController;
+	public SpriteRenderer render;
+	public Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -29,8 +31,6 @@ public class PlayerMover : MonoBehaviour {
 		InputHandler.SetPrimaryKeyAsAxis("JoyLeft", "Joy1 Axis 1-", KeyCode.None, 0.2f);
 		InputHandler.SetPrimaryKeyAsAxis("JoyRight", "Joy1 Axis 1+", KeyCode.None, 0.2f);
 
-        characterController = this.GetComponent<CharacterController>();
-
 		InputHandler.OnAxisScanned += HandleAxisScanned;
 	}
 
@@ -45,18 +45,22 @@ public class PlayerMover : MonoBehaviour {
     
 		if (InputHandler.GetKey("Up")){
 			moveVector += new Vector3(1,0,-1);
+			anim.Play("Back");
 		}
 
-		if (InputHandler.GetKey("Down")){
+		else if (InputHandler.GetKey("Down")){
 			moveVector += new Vector3(-1,0,1);
+			anim.Play("Front");
 		}
 
 		if (InputHandler.GetKey("Left")){
 			moveVector += new Vector3(1,0,1);
+			render.flipX = true;
 		}
 
-		if (InputHandler.GetKey("Right")){
+		else if (InputHandler.GetKey("Right")){
 			moveVector += new Vector3(-1,0,-1);
+			render.flipX = false;
 		}
 
 		moveVector = moveVector.normalized;

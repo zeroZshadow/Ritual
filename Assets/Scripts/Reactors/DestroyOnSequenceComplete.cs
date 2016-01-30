@@ -11,6 +11,7 @@ public class DestroyOnSequenceComplete : MonoBehaviour {
 	}
 
 	void HandleSequenceComplete (){
+		sequence.OnSequenceComplete -= HandleSequenceComplete;
 		Destroy(gameObject);
 	}
 	

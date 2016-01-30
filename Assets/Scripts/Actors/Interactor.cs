@@ -26,7 +26,6 @@ public class Interactor : MonoBehaviour {
 		Interactable closestInteractible = null;
 
 		foreach (Collider collider in colliders){
-			Debug.Log(colliders.Length);
 		    float distance = Vector3.Distance(transform.position, collider.transform.position);
 			if (distance < closestDistance && collider.GetComponent<Interactable>() != null) {
 				closestDistance=distance;

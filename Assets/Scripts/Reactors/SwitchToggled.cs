@@ -7,8 +7,8 @@ public class SwitchToggled : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		toggleSwitch.OnTriggerPress += HandleFloorSwitchPress;
-		toggleSwitch.OnTriggerRelease += HandleFloorSwitchRelease;
+		toggleSwitch.OnSwitchOn += HandleFloorSwitchPress;
+		toggleSwitch.OnSwitchOff += HandleFloorSwitchRelease;
 	}
 
 	void HandleFloorSwitchPress (ToggleSwitch floorSwitch){

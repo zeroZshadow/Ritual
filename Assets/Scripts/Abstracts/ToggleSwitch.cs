@@ -3,8 +3,9 @@ using System.Collections;
 
 public class ToggleSwitch : Interactable {
 
-	public delegate void FloorSwitchAction(ToggleSwitch floorSwitch);
+	public delegate void SwitchAction(ToggleSwitch floorSwitch);
+	public bool IsOn = false;
 
-	public FloorSwitchAction OnTriggerPress;
-	public FloorSwitchAction OnTriggerRelease;
+	public SwitchAction OnSwitchOn;
+	public SwitchAction OnSwitchOff;
 }

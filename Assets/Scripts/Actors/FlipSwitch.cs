@@ -3,18 +3,16 @@ using System.Collections;
 
 public class FlipSwitch : ToggleSwitch {
 
-	public bool on = false;
-
 	public override void Interact(){
-		if (on){
-			on = false;
-			if (OnTriggerRelease != null){
-				OnTriggerRelease(this);
+		if (IsOn){
+			IsOn = false;
+			if (OnSwitchOff != null){
+				OnSwitchOff(this);
 			}
 		}else{
-			on=true;
-			if (OnTriggerPress != null){
-				OnTriggerPress(this);
+			IsOn=true;
+			if (OnSwitchOn != null){
+				OnSwitchOn(this);
 			}
 		}
 	}

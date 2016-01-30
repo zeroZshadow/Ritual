@@ -5,14 +5,14 @@ using System;
 public class FloorSwitch : ToggleSwitch {
 
 	void OnTriggerEnter(Collider other) {
-		if (OnTriggerPress != null){
-			OnTriggerPress(this);
+		if (OnSwitchOn != null){
+			OnSwitchOn(this);
 		}
     }
 
 	void OnTriggerExit(Collider other) {
-		if (OnTriggerRelease != null){
-			OnTriggerRelease(this);
+		if (OnSwitchOff != null){
+			OnSwitchOff(this);
 		}
     }
 }

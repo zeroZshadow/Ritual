@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DestroyOnSequenceComplete : MonoBehaviour {
 
-	public Sequence sequence;
+	public OnSequence sequence;
 
 	// Use this for initialization
 	void Start () {

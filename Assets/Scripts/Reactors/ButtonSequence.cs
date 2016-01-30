@@ -2,12 +2,10 @@
 using System.Collections;
 using System;
 
-public class Sequence : MonoBehaviour {
+public class ButtonSequence : OnSequence {
 
 	public Button[] buttons;
 	public bool ResetsOnFail = true;
-
-	public Action OnSequenceComplete;
 
 	private int nextInLine = 0;
 	private bool SequenceDone = false;

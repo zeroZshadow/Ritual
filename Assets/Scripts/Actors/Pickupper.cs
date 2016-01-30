@@ -7,6 +7,7 @@ public class Pickupper : MonoBehaviour {
 	ConfigurableInput InputHandler;
 
 	public KeyCode ActionKey;
+	public LayerMask mask;
 
 	// Use this for initialization
 	void Start () {
@@ -28,16 +29,8 @@ public class Pickupper : MonoBehaviour {
 		}
 	}
 
-    void OnControllerColliderHit(ControllerColliderHit hit) {
-        /*if (pickedUpObject == null){
-            if (hit.gameObject.GetComponent<Pickupable>() != null){
-				Pickup(hit.gameObject.GetComponent<Pickupable>());
-            }
-        }*/
-    }
-
 	private void TryPlace(){
-		if (!Physics.CheckBox(this.transform.position + (this.transform.forward * 1.5f), new Vector3(0.5f, 0.5f, 0.5f))){
+		if (!Physics.CheckBox(this.transform.position + (this.transform.forward * 1.5f), new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity, mask)){
 			pickedUpObject.transform.parent = null;
 			pickedUpObject.transform.position = this.transform.position + (this.transform.forward * 1.5f);
 			pickedUpObject = null;

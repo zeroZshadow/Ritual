@@ -20,7 +20,7 @@ public class Pickupper : MonoBehaviour {
 		if (InputHandler.GetKeyDown("Action")){
 			if (pickedUpObject == null){
 				Pickupable pickupable;
-				if (GetPickupableInFront(out pickupable)){
+				if (GetPickupable(out pickupable)){
 					Pickup(pickupable);
 				}
 			}else{
@@ -37,22 +37,37 @@ public class Pickupper : MonoBehaviour {
 		}
 	}
 
-	private bool GetPickupableInFront(out Pickupable pickupable){
-		RaycastHit hit;
-		if (Physics.Raycast(this.transform.position, transform.forward, out hit, 1)){
-			if (hit.collider.GetComponent<Pickupable>()){
-				pickupable = hit.collider.GetComponent<Pickupable>();
-				return true;
+	private bool GetPickupable(out Pickupable pickupable){
+
+
+		Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
+		float closestDistance = float.MaxValue;
+		Pickupable closestPickupable = null;
+
+		foreach (Collider collider in colliders){
+		    float distance = Vector3.Distance(transform.position, collider.transform.position);
+			if (distance < closestDistance && collider.GetComponent<Pickupable>() != null) {
+				closestDistance=distance;
+				closestPickupable = collider.GetComponent<Pickupable>();
 			}
 		}
-		pickupable = null;
-		return false;
+
+		if (closestPickupable == null){
+			pickupable = null;
+			return false;
+		}
+		pickupable = closestPickupable;
+		return true;
 	}
 
 	private void Pickup(Pickupable pickupable){
 		pickedUpObject = pickupable;
 		pickedUpObject.transform.parent = this.transform;
 		pickedUpObject.transform.localPosition = new Vector3(0,1,0);
+    }
+
+	public Pickupable GetCarriedObject(){
+		return pickedUpObject;
     }
     
 }

@@ -10,11 +10,14 @@ public class PlayerMover : MonoBehaviour {
 	public KeyCode LeftKey;
 	public KeyCode RightKey;
 
-	public float playerSpeed = 0.1f;
-
-	public CharacterController characterController;
 	public SpriteRenderer render;
 	public Animator anim;
+
+	// GridMove
+	public float moveSpeed = 3f;
+	public float gridSize = 1f;
+	private Vector2 _input;
+	private bool _isMoving = false;
 
 	// Use this for initialization
 	void Start() {
@@ -24,49 +27,80 @@ public class PlayerMover : MonoBehaviour {
 		InputHandler.SetKey("Left", LeftKey, KeyCode.None, KeyCode.None, KeyCode.None);
 		InputHandler.SetKey("Right", RightKey, KeyCode.None, KeyCode.None, KeyCode.None);
 
+		/*
 		InputHandler.SetAxis("Vertical", "JoyUp", "JoyDown");
 		InputHandler.SetAxis("Horizontal", "JoyLeft", "JoyRight");
 		InputHandler.SetPrimaryKeyAsAxis("JoyUp", "Joy1 Axis 2-", KeyCode.None, 0.2f);
 		InputHandler.SetPrimaryKeyAsAxis("JoyDown", "Joy1 Axis 2+", KeyCode.None, 0.2f);
 		InputHandler.SetPrimaryKeyAsAxis("JoyLeft", "Joy1 Axis 1-", KeyCode.None, 0.2f);
 		InputHandler.SetPrimaryKeyAsAxis("JoyRight", "Joy1 Axis 1+", KeyCode.None, 0.2f);
-
-		InputHandler.OnAxisScanned += HandleAxisScanned;
-	}
-
-	void HandleAxisScanned(string axis, KeyCode modiefier) {
-		Debug.Log(axis);
+		*/
 	}
 
 	// Update is called once per frame
 	void Update() {
-		Vector3 moveVector = Vector3.zero;
+		if (!_isMoving) {
+			if (InputHandler.GetKey("Up")) {
+				_input += new Vector2(0, -1);
+				anim.Play("Back");
+				render.flipX = false;
+			} else if (InputHandler.GetKey("Down")) {
+				_input += new Vector2(0, 1);
+				anim.Play("Front");
+				render.flipX = true;
+			} else if (InputHandler.GetKey("Left")) {
+				_input += new Vector2(1, 0);
+				anim.Play("Back");
+				render.flipX = true;
+			} else if (InputHandler.GetKey("Right")) {
+				_input += new Vector2(-1, 0);
+				anim.Play("Front");
+				render.flipX = false;
+			}
 
-		if (InputHandler.GetKey("Up")) {
-			moveVector += new Vector3(0, 0, -1);
-			anim.Play("Back");
-			render.flipX = false;
-		} else if (InputHandler.GetKey("Down")) {
-			moveVector += new Vector3(0, 0, 1);
-			anim.Play("Front");
-			render.flipX = true;
-		} else if (InputHandler.GetKey("Left")) {
-			moveVector += new Vector3(1, 0, 0);
-			anim.Play("Back");
-			render.flipX = true;
-		} else if (InputHandler.GetKey("Right")) {
-			moveVector += new Vector3(-1, 0, 0);
-			anim.Play("Front");
-			render.flipX = false;
+			// Make sure we dont go diagonal
+			if (Mathf.Abs(_input.x) > Mathf.Abs(_input.y)) {
+				_input.y = 0;
+			} else {
+				_input.x = 0;
+			}
+
+			//Move
+			if (_input != Vector2.zero) {
+				StartCoroutine(move(transform));
+			}
+		}
+	}
+
+	private IEnumerator move(Transform transform) {
+		_isMoving = true;
+		Vector3 startPosition = transform.position;
+		float t = 0;
+
+		// Calculate target position
+		Vector3 endPosition = new Vector3(
+			startPosition.x + System.Math.Sign(_input.x) * gridSize,
+			startPosition.y,
+			startPosition.z + System.Math.Sign(_input.y) * gridSize
+		);
+
+		Vector3 direction = endPosition - startPosition;
+		float length = direction.magnitude;
+		direction /= length;
+
+		// Only move if we wont hit anything
+		RaycastHit hitInfo;
+		if (!Physics.Raycast(startPosition, direction, out hitInfo, length) || hitInfo.collider.isTrigger) {
+			while (t < 1f) {
+				t += Time.deltaTime * (moveSpeed / gridSize);
+				transform.position = Vector3.Lerp(startPosition, endPosition, t);
+				yield return null;
+			}
 		}
 
-		// Possible controller input
-		//moveVector += new Vector3(InputHandler.GetAxis("Horizontal") + InputHandler.GetAxis("Vertical"), 0, InputHandler.GetAxis("Horizontal") - InputHandler.GetAxis("Vertical"));
-
-		// Normalize
-		moveVector = moveVector.normalized;
-		moveVector *= playerSpeed;
-
-		characterController.Move(moveVector);
+		// Reset and return
+		_isMoving = false;
+		_input = Vector2.zero;
+		yield return 0;
 	}
 }

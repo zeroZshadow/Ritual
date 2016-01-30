@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 77195d164ac3d954cb6f8ef80fac44ca
-timeCreated: 1454156515
+guid: 50b1d2a45dee30b46892b6c41eb07d5c
+timeCreated: 1454171648
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -66,17 +66,16 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -19, y: 25}
-        - {x: -25, y: 18}
-        - {x: -25, y: -8}
-        - {x: -19, y: -13}
-        - {x: -16, y: -12}
-        - {x: -16, y: -16}
+      - - {x: -12, y: 25}
+        - {x: -25, y: 20}
+        - {x: -25, y: -10}
+        - {x: -21, y: -16}
+        - {x: -14, y: -12}
+        - {x: -14, y: -13}
+        - {x: -16, y: -20}
         - {x: -13, y: -25}
-        - {x: 15, y: -25}
-        - {x: 25, y: -13}
-        - {x: 25, y: 23}
-        - {x: 16, y: 25}
+        - {x: 25, y: -25}
+        - {x: 25, y: 25}
     - name: Character_Back_1
       rect:
         serializedVersion: 2
@@ -88,13 +87,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -14, y: 25}
-        - {x: -25, y: 21}
-        - {x: -25, y: -4}
-        - {x: -20, y: -14}
-        - {x: -11, y: -25}
-        - {x: 25, y: -25}
-        - {x: 25, y: 25}
+      - - {x: -13, y: 25}
+        - {x: -25, y: 19}
+        - {x: -25, y: -10}
+        - {x: -22, y: -18}
+        - {x: -17, y: -25}
+        - {x: 16, y: -25}
+        - {x: 25, y: -7}
+        - {x: 25, y: 18}
+        - {x: 18, y: 25}
     - name: Character_Back_2
       rect:
         serializedVersion: 2
@@ -106,15 +107,20 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -17, y: 25}
-        - {x: -25, y: 23}
-        - {x: -25, y: 0}
-        - {x: -14, y: -21}
-        - {x: -9, y: -25}
-        - {x: 17, y: -25}
-        - {x: 25, y: -11}
-        - {x: 25, y: 24}
-        - {x: 23, y: 25}
+      - - {x: 25, y: -2}
+        - {x: 25, y: 18}
+        - {x: 14, y: 25}
+        - {x: -10, y: 25}
+        - {x: -17, y: 22}
+        - {x: -24, y: 16}
+        - {x: -25, y: 11}
+        - {x: -25, y: -3}
+        - {x: -20, y: -11}
+        - {x: -15, y: -22}
+        - {x: -7, y: -25}
+        - {x: 10, y: -25}
+        - {x: 12, y: -24}
+        - {x: 15, y: -14}
     - name: Character_Back_3
       rect:
         serializedVersion: 2
@@ -126,13 +132,18 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -20, y: 25}
-        - {x: -25, y: 18}
-        - {x: -25, y: -17}
-        - {x: -17, y: -25}
-        - {x: 23, y: -25}
-        - {x: 25, y: -20}
-        - {x: 25, y: 25}
+      - - {x: 25, y: -4}
+        - {x: 25, y: 21}
+        - {x: 18, y: 25}
+        - {x: -19, y: 25}
+        - {x: -25, y: 16}
+        - {x: -25, y: -10}
+        - {x: -23, y: -20}
+        - {x: -10, y: -25}
+        - {x: 12, y: -25}
+        - {x: 12, y: -24}
+        - {x: 16, y: -16}
+        - {x: 20, y: -12}
     - name: Character_Back_4
       rect:
         serializedVersion: 2
@@ -144,14 +155,13 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -10, y: 25}
-        - {x: -25, y: 16}
-        - {x: -25, y: -19}
-        - {x: -15, y: -25}
-        - {x: 21, y: -25}
-        - {x: 25, y: -14}
-        - {x: 25, y: 16}
-        - {x: 14, y: 25}
+      - - {x: -19, y: 25}
+        - {x: -25, y: 23}
+        - {x: -25, y: -25}
+        - {x: 15, y: -25}
+        - {x: 25, y: -12}
+        - {x: 25, y: 17}
+        - {x: 16, y: 25}
     outline: []
   spritePackingTag: character
   userData: 

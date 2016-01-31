@@ -5,6 +5,7 @@ public class Pickupper : MonoBehaviour {
 
     Pickupable pickedUpObject;
 	ConfigurableInput InputHandler;
+	public Player player;
 
 	public KeyCode ActionKey;
 	public LayerMask mask;
@@ -24,22 +25,43 @@ public class Pickupper : MonoBehaviour {
 					Pickup(pickupable);
 				}
 			}else{
-				TryPlace();
+				if (!player.isMoving()){
+					TryPlace();
+				}
 			}
 		}
 	}
 
 	private void TryPlace(){
-		if (!Physics.CheckBox(this.transform.position + (this.transform.forward * 1.5f), new Vector3(0.5f, 0.5f, 0.5f), Quaternion.identity, mask)){
+
+		Collider[] colliders;
+		colliders = Physics.OverlapBox(this.transform.position + (player.GetDirection() * 1f), new Vector3(0.4f, 0.4f, 0.4f), Quaternion.identity, mask);
+		PlaceLocation placeLocation = null;
+		float closestDistance = float.MaxValue;
+
+		foreach (Collider collider in colliders){
+		    float distance = Vector3.Distance(transform.position, collider.transform.position);
+			if (distance < closestDistance && collider.GetComponent<PlaceLocation>() != null) {
+				closestDistance=distance;
+				placeLocation = collider.GetComponent<PlaceLocation>();
+			}
+		}
+
+		if (placeLocation != null){
+			if (placeLocation.TryPlace(pickedUpObject)){
+				GameObject.Destroy(pickedUpObject.gameObject);
+				pickedUpObject = null;
+			}
+		}
+
+		if (placeLocation == null && colliders.Length == 0){
 			pickedUpObject.transform.parent = null;
-			pickedUpObject.transform.position = this.transform.position + (this.transform.forward * 1.5f);
+			pickedUpObject.transform.position = this.transform.position + (player.GetDirection()  * 1f);
 			pickedUpObject = null;
 		}
 	}
 
 	private bool GetPickupable(out Pickupable pickupable){
-
-
 		Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
 		float closestDistance = float.MaxValue;
 		Pickupable closestPickupable = null;

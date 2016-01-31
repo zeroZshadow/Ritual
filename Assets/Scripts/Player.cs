@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class PlayerMover : MonoBehaviour {
+public class Player : MonoBehaviour {
 
 	ConfigurableInput InputHandler;
 
@@ -12,6 +13,7 @@ public class PlayerMover : MonoBehaviour {
 
 	public SpriteRenderer render;
 	public Animator anim;
+	public Image hudStress;
 
 	// GridMove
 	public float moveSpeed = 3f;
@@ -21,6 +23,8 @@ public class PlayerMover : MonoBehaviour {
 	private bool _isMoving = false;
 
 	// Stress
+	public bool stressed = true;
+	public float stressMax = 100.0f;
 	public static float _stress = 0.0f;
 
 	// Use this for initialization
@@ -61,23 +65,26 @@ public class PlayerMover : MonoBehaviour {
 				_input.x = 0;
 			}
 
-			//Move
+			// Move
 			if (_input != Vector2.zero) {
 				_direction = _input;
 				StartCoroutine(move(transform));
 			}
 		}
 
-		//Debug
-		_stress += Time.deltaTime;
-
-		// Animate
-		//Get stress state
+		// Stress
 		string stateSuffix = "";
-		if (_stress > 5.0f) {
+		if (stressed) {
+			_stress += Time.deltaTime;
 			stateSuffix = "Glitch";
+
+			// Visualize
+			float progress = _stress / stressMax;
+			hudStress.fillAmount = progress;
 		}
 
+		// Animate
+	
 		if (_direction.y == -1) {
 			anim.Play("Back" + stateSuffix);
 			render.flipX = false;

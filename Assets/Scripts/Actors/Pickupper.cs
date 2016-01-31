@@ -5,14 +5,13 @@ public class Pickupper : MonoBehaviour {
 
     Pickupable pickedUpObject;
 	ConfigurableInput InputHandler;
-	PlayerMover playerMover;
+	public Player player;
 
 	public KeyCode ActionKey;
 	public LayerMask mask;
 
 	// Use this for initialization
 	void Start () {
-		playerMover = gameObject.GetComponent<PlayerMover>();
 		InputHandler = ConfigurableInput.Instance;
 		InputHandler.SetKey("Action", ActionKey, KeyCode.None, KeyCode.None, KeyCode.None);
 	}
@@ -26,7 +25,7 @@ public class Pickupper : MonoBehaviour {
 					Pickup(pickupable);
 				}
 			}else{
-				if (!playerMover.isMoving()){
+				if (!player.isMoving()){
 					TryPlace();
 				}
 			}
@@ -36,7 +35,7 @@ public class Pickupper : MonoBehaviour {
 	private void TryPlace(){
 
 		Collider[] colliders;
-		colliders = Physics.OverlapBox(this.transform.position + (playerMover.GetDirection() * 1f), new Vector3(0.4f, 0.4f, 0.4f), Quaternion.identity, mask);
+		colliders = Physics.OverlapBox(this.transform.position + (player.GetDirection() * 1f), new Vector3(0.4f, 0.4f, 0.4f), Quaternion.identity, mask);
 		PlaceLocation placeLocation = null;
 		float closestDistance = float.MaxValue;
 
@@ -57,7 +56,7 @@ public class Pickupper : MonoBehaviour {
 
 		if (placeLocation == null && colliders.Length == 0){
 			pickedUpObject.transform.parent = null;
-			pickedUpObject.transform.position = this.transform.position + (playerMover.GetDirection()  * 1f);
+			pickedUpObject.transform.position = this.transform.position + (player.GetDirection()  * 1f);
 			pickedUpObject = null;
 		}
 	}

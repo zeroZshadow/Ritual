@@ -6,7 +6,9 @@
 Shader "Unlit/Transparent Snap" {
 Properties {
 	_MainTex ("Base (RGB) Trans (A)", 2D) = "white" {}
-	_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
+	_AltTex("Alterate (RGB) Trans (A)", 2D) = "white" {}
+	_Blend("Blend", Range(0, 1)) = 0.0
+	_Cutoff ("Alpha cutoff", Range(0, 1)) = 1.0
 	[MaterialToggle] PixelSnap ("Pixel snap", Float) = 1
 }
 SubShader {
@@ -36,6 +38,8 @@ SubShader {
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
+			sampler2D _AltTex;
+			fixed _Blend;
 			fixed _Cutoff;
 
 			v2f vert (appdata_t v)
@@ -52,6 +56,8 @@ SubShader {
 			fixed4 frag (v2f i) : SV_Target
 			{
 				fixed4 col = tex2D(_MainTex, i.texcoord);
+				fixed4 alt = tex2D(_AltTex, i.texcoord);
+				col = lerp(col, alt, _Blend);
 				clip(col.a - _Cutoff);
 				return col;
 			}

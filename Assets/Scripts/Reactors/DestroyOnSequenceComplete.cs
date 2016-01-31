@@ -7,7 +7,7 @@ public class DestroyOnSequenceComplete : MonoBehaviour {
 	public AudioClip soundOnOpen;
 
 	[Header("Destroy Animation")]
-	public Material mat;
+	private Material mat;
 	public Texture2D[] MainTex;
 	public Texture2D[] AltTex;
 	public int framerate = 5;

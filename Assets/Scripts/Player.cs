@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -86,6 +87,14 @@ public class Player : MonoBehaviour {
 			if (_stress >= (stressMinimum + partSize)) {
 				stressMinimum += partSize;
 			}
+
+			// Death?
+			if (_stress >= stressMax) {
+				SceneManager.LoadScene("GameEnd");
+				return;
+			}
+
+			// Alert
 			if (!audioSource.isPlaying){
 				audioSource.Play();
 			}

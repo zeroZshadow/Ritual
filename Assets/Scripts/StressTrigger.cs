@@ -18,4 +18,9 @@ public class StressTrigger : MonoBehaviour {
 			Player.stressed = false;
 		}
 	}
+
+	void OnDestroy(){
+		Player.reason = Player.StressReason.None;
+		Player.stressed = false;
+	}
 }

@@ -4,6 +4,12 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
+	public enum StressReason {
+		None,
+		Red,
+		Align
+	}
+
 	ConfigurableInput InputHandler;
 
 	public KeyCode UpKey;
@@ -12,7 +18,9 @@ public class Player : MonoBehaviour {
 	public KeyCode RightKey;
 
 	public SpriteRenderer render;
+	public SpriteRenderer bubble;
 	public Animator anim;
+	public Animator bubbleAnim;
 	public Image hudStress;
 
 	// GridMove
@@ -23,8 +31,13 @@ public class Player : MonoBehaviour {
 	private bool _isMoving = false;
 
 	// Stress
-	public bool stressed = true;
+	public static StressReason reason;
+	public static bool stressed = false;
+	public float stressIncMod = 1.0f;
+	public float stressDecMod = 2.0f;
 	public float stressMax = 100.0f;
+	public float stressMinimum = 0.0f;
+	public int stressParts = 6;
 	public static float _stress = 0.0f;
 
 	// Use this for initialization
@@ -34,15 +47,6 @@ public class Player : MonoBehaviour {
 		InputHandler.SetKey("Down", DownKey, KeyCode.None, KeyCode.None, KeyCode.None);
 		InputHandler.SetKey("Left", LeftKey, KeyCode.None, KeyCode.None, KeyCode.None);
 		InputHandler.SetKey("Right", RightKey, KeyCode.None, KeyCode.None, KeyCode.None);
-
-		/*
-		InputHandler.SetAxis("Vertical", "JoyUp", "JoyDown");
-		InputHandler.SetAxis("Horizontal", "JoyLeft", "JoyRight");
-		InputHandler.SetPrimaryKeyAsAxis("JoyUp", "Joy1 Axis 2-", KeyCode.None, 0.2f);
-		InputHandler.SetPrimaryKeyAsAxis("JoyDown", "Joy1 Axis 2+", KeyCode.None, 0.2f);
-		InputHandler.SetPrimaryKeyAsAxis("JoyLeft", "Joy1 Axis 1-", KeyCode.None, 0.2f);
-		InputHandler.SetPrimaryKeyAsAxis("JoyRight", "Joy1 Axis 1+", KeyCode.None, 0.2f);
-		*/
 	}
 
 	// Update is called once per frame
@@ -75,16 +79,43 @@ public class Player : MonoBehaviour {
 		// Stress
 		string stateSuffix = "";
 		if (stressed) {
-			_stress += Time.deltaTime;
-			stateSuffix = "Glitch";
+			_stress += Time.deltaTime * stressIncMod;
+			float partSize = stressMax / stressParts;
+			if (_stress >= (stressMinimum + partSize)) {
+				stressMinimum += partSize;
+			}
 
-			// Visualize
-			float progress = _stress / stressMax;
-			hudStress.fillAmount = progress;
+			stateSuffix = "Glitch";
+		} else {
+			// Lower when not stressed, but not below the smallest amount
+			_stress -= Time.deltaTime * stressDecMod;
+			if (_stress < stressMinimum) {
+				_stress = stressMinimum;
+			}
+		}
+
+		// Visualize stress
+		float progress = _stress / stressMax;
+		hudStress.fillAmount = progress;
+
+		//Bubble
+		bubble.enabled = stressed;
+		if (stressed) {
+			switch (reason) {
+				case StressReason.Red:
+					bubbleAnim.Play("BubbleRed");
+					break;
+				case StressReason.Align:
+					bubbleAnim.Play("BubbleAlign");
+					break;
+				default:
+					Debug.Log("Invalid reason");
+					bubbleAnim.Stop();
+					break;
+			}
 		}
 
 		// Animate
-	
 		if (_direction.y == -1) {
 			anim.Play("Back" + stateSuffix);
 			render.flipX = false;

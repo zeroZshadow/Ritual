@@ -24,7 +24,11 @@ public class Player : MonoBehaviour {
 
 	// Stress
 	public bool stressed = true;
+	public float stressIncMod = 1.0f;
+	public float stressDecMod = 2.0f;
 	public float stressMax = 100.0f;
+	public float stressMinimum = 0.0f;
+	public int stressParts = 6;
 	public static float _stress = 0.0f;
 
 	// Use this for initialization
@@ -75,16 +79,26 @@ public class Player : MonoBehaviour {
 		// Stress
 		string stateSuffix = "";
 		if (stressed) {
-			_stress += Time.deltaTime;
-			stateSuffix = "Glitch";
+			_stress += Time.deltaTime * stressIncMod;
+			float partSize = stressMax / stressParts;
+			if (_stress >= (stressMinimum + partSize)) {
+				stressMinimum += partSize;
+			}
 
-			// Visualize
-			float progress = _stress / stressMax;
-			hudStress.fillAmount = progress;
+			stateSuffix = "Glitch";
+		} else {
+			// Lower when not stressed, but not below the smallest amount
+			_stress -= Time.deltaTime * stressDecMod;
+			if (_stress < stressMinimum) {
+				_stress = stressMinimum;
+			}
 		}
 
+		// Visualize stress
+		float progress = _stress / stressMax;
+		hudStress.fillAmount = progress;
+
 		// Animate
-	
 		if (_direction.y == -1) {
 			anim.Play("Back" + stateSuffix);
 			render.flipX = false;

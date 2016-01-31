@@ -1,14 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour {
-    public GameObject projectile;
+    public GameObject creditsPanel;
 
     void Update()
     {
-        if (Input.GetButtonDown("Return"))
+        if (Input.GetKeyDown("return"))
         {
-
+            SceneManager.LoadScene("Scenes/Levels/Level1");
         }
+        if(Input.GetKeyDown("c"))
+        {
+            var newState = !creditsPanel.gameObject.activeSelf;
+
+            creditsPanel.gameObject.SetActive(newState);
+        }
+
     }
 }

@@ -6,6 +6,8 @@
 Shader "Unlit/TextureSnap" {
 Properties {
 	_MainTex ("Base (RGB)", 2D) = "white" {}
+	_AltTex ("Alterate (RGB)", 2D) = "white" {}
+	_Blend ("Blend", Range(0, 1)) = 0
 	[MaterialToggle] PixelSnap ("Pixel snap", Float) = 1
 }
 
@@ -33,6 +35,8 @@ SubShader {
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
+			sampler2D _AltTex;
+			fixed _Blend;
 			
 			v2f vert (appdata_t v)
 			{
@@ -48,6 +52,8 @@ SubShader {
 			fixed4 frag (v2f i) : SV_Target
 			{
 				fixed4 col = tex2D(_MainTex, i.texcoord);
+				fixed4 alt = tex2D(_AltTex, i.texcoord);
+				col = lerp(col, alt, _Blend);
 				UNITY_OPAQUE_ALPHA(col.a);
 				return col;
 			}

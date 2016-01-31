@@ -21,7 +21,7 @@ public class Interactor : MonoBehaviour {
 
 	private void Interact(){
 		if (pickupper != null && pickupper.GetCarriedObject() != null) return;
-		Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
+		Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1f);
 		float closestDistance = float.MaxValue;
 		Interactable closestInteractible = null;
 

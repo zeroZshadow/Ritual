@@ -62,7 +62,7 @@ public class Pickupper : MonoBehaviour {
 	}
 
 	private bool GetPickupable(out Pickupable pickupable){
-		Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
+		Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1f);
 		float closestDistance = float.MaxValue;
 		Pickupable closestPickupable = null;
 

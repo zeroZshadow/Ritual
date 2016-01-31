@@ -103,4 +103,8 @@ public class PlayerMover : MonoBehaviour {
 		_input = Vector2.zero;
 		yield return 0;
 	}
+
+	public bool isMoving(){
+		return _isMoving;
+	}
 }

@@ -1,13 +1,21 @@
 fileFormatVersion: 2
 guid: 876a6caee90c89648a92cea5dd4d804a
-timeCreated: 1454202089
+timeCreated: 1454229551
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: SpeechBubble_Red_0
+    21300002: SpeechBubble_Red_1
+    21300004: SpeechBubble_Red_2
+    21300006: SpeechBubble_Red_3
+    21300008: SpeechBubble_Red_4
+    21300010: SpeechBubble_Red_5
+    21300012: SpeechBubble_Red_6
+    21300014: SpeechBubble_Red_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -26,32 +34,184 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: SpeechBubble_Red_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 21}
+        - {x: -18, y: 18}
+        - {x: -18, y: -8}
+        - {x: 4, y: -19}
+        - {x: 14, y: -19}
+        - {x: 18, y: -12}
+        - {x: 18, y: 20}
+        - {x: 15, y: 21}
+    - name: SpeechBubble_Red_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 21}
+        - {x: -19, y: 18}
+        - {x: -19, y: -8}
+        - {x: 3, y: -19}
+        - {x: 13, y: -19}
+        - {x: 17, y: -12}
+        - {x: 17, y: 20}
+        - {x: 14, y: 21}
+    - name: SpeechBubble_Red_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 20}
+        - {x: -18, y: 18}
+        - {x: -18, y: -9}
+        - {x: 3, y: -20}
+        - {x: 13, y: -20}
+        - {x: 18, y: -13}
+        - {x: 18, y: 19}
+        - {x: 15, y: 20}
+    - name: SpeechBubble_Red_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 20}
+        - {x: -19, y: 18}
+        - {x: -19, y: -9}
+        - {x: 2, y: -20}
+        - {x: 12, y: -20}
+        - {x: 17, y: -13}
+        - {x: 17, y: 19}
+        - {x: 14, y: 20}
+    - name: SpeechBubble_Red_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 21}
+        - {x: -19, y: 18}
+        - {x: -19, y: -8}
+        - {x: 3, y: -19}
+        - {x: 13, y: -19}
+        - {x: 17, y: -12}
+        - {x: 17, y: 20}
+        - {x: 14, y: 21}
+    - name: SpeechBubble_Red_5
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 21}
+        - {x: -19, y: 18}
+        - {x: -19, y: -8}
+        - {x: 3, y: -19}
+        - {x: 13, y: -19}
+        - {x: 17, y: -12}
+        - {x: 17, y: 20}
+        - {x: 14, y: 21}
+    - name: SpeechBubble_Red_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 21}
+        - {x: -19, y: 18}
+        - {x: -19, y: -8}
+        - {x: 3, y: -19}
+        - {x: 13, y: -19}
+        - {x: 17, y: -12}
+        - {x: 17, y: 20}
+        - {x: 14, y: 21}
+    - name: SpeechBubble_Red_7
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 21}
+        - {x: -19, y: 18}
+        - {x: -19, y: -8}
+        - {x: 3, y: -19}
+        - {x: 13, y: -19}
+        - {x: 17, y: -12}
+        - {x: 17, y: 20}
+        - {x: 14, y: 21}
     outline: []
-  spritePackingTag: 
+  spritePackingTag: character
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -1,0 +1,282 @@
+fileFormatVersion: 2
+guid: 9ad43955d8cb01849a2f94084c7268bd
+timeCreated: 1454196346
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Character_BackGlitch2_0
+    21300002: Character_BackGlitch2_1
+    21300004: Character_BackGlitch2_2
+    21300006: Character_BackGlitch2_3
+    21300008: Character_BackGlitch2_4
+    21300010: Character_BackGlitch2_5
+    21300012: Character_BackGlitch2_6
+    21300014: Character_BackGlitch2_7
+    21300016: Character_BackGlitch2_8
+    21300018: Character_BackGlitch2_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Character_BackGlitch2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 25}
+        - {x: -25, y: 20}
+        - {x: -25, y: -10}
+        - {x: -21, y: -16}
+        - {x: -14, y: -12}
+        - {x: -14, y: -13}
+        - {x: -16, y: -20}
+        - {x: -13, y: -25}
+        - {x: 25, y: -25}
+        - {x: 25, y: 25}
+    - name: Character_BackGlitch2_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 25}
+        - {x: -25, y: 19}
+        - {x: -25, y: -10}
+        - {x: -22, y: -18}
+        - {x: -17, y: -25}
+        - {x: 16, y: -25}
+        - {x: 25, y: -7}
+        - {x: 25, y: 18}
+        - {x: 18, y: 25}
+    - name: Character_BackGlitch2_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25, y: -2}
+        - {x: 25, y: 18}
+        - {x: 14, y: 25}
+        - {x: -10, y: 25}
+        - {x: -17, y: 22}
+        - {x: -24, y: 16}
+        - {x: -25, y: 11}
+        - {x: -25, y: -3}
+        - {x: -20, y: -11}
+        - {x: -15, y: -22}
+        - {x: -7, y: -25}
+        - {x: 10, y: -25}
+        - {x: 12, y: -24}
+        - {x: 15, y: -14}
+    - name: Character_BackGlitch2_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25, y: -4}
+        - {x: 25, y: 21}
+        - {x: 18, y: 25}
+        - {x: -19, y: 25}
+        - {x: -25, y: 16}
+        - {x: -25, y: -10}
+        - {x: -23, y: -20}
+        - {x: -10, y: -25}
+        - {x: 12, y: -25}
+        - {x: 12, y: -24}
+        - {x: 16, y: -16}
+        - {x: 20, y: -12}
+    - name: Character_BackGlitch2_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 25}
+        - {x: -25, y: 23}
+        - {x: -25, y: -25}
+        - {x: 15, y: -25}
+        - {x: 25, y: -12}
+        - {x: 25, y: 17}
+        - {x: 16, y: 25}
+    - name: Character_BackGlitch2_5
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 25}
+        - {x: -25, y: 20}
+        - {x: -25, y: -10}
+        - {x: -21, y: -16}
+        - {x: -14, y: -12}
+        - {x: -14, y: -13}
+        - {x: -16, y: -20}
+        - {x: -13, y: -25}
+        - {x: 25, y: -25}
+        - {x: 25, y: 25}
+    - name: Character_BackGlitch2_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 25}
+        - {x: -25, y: 19}
+        - {x: -25, y: -10}
+        - {x: -22, y: -18}
+        - {x: -17, y: -25}
+        - {x: 16, y: -25}
+        - {x: 25, y: -7}
+        - {x: 25, y: 18}
+        - {x: 18, y: 25}
+    - name: Character_BackGlitch2_7
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 25}
+        - {x: -25, y: 23}
+        - {x: -25, y: -20}
+        - {x: -8, y: -25}
+        - {x: 20, y: -25}
+        - {x: 25, y: -13}
+        - {x: 25, y: 17}
+        - {x: 22, y: 25}
+      - - {x: -22, y: -14}
+        - {x: -21, y: -17}
+        - {x: -16, y: -17}
+        - {x: -14, y: -15}
+        - {x: -15, y: -12}
+        - {x: -20, y: -12}
+    - name: Character_BackGlitch2_8
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 25}
+        - {x: -20, y: 23}
+        - {x: -25, y: 13}
+        - {x: -25, y: -2}
+        - {x: -23, y: -10}
+        - {x: -16, y: -13}
+        - {x: -14, y: -9}
+        - {x: -15, y: -19}
+        - {x: -7, y: -25}
+        - {x: 12, y: -25}
+        - {x: 25, y: -12}
+        - {x: 25, y: 18}
+        - {x: 17, y: 25}
+    - name: Character_BackGlitch2_9
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 25}
+        - {x: -25, y: 23}
+        - {x: -25, y: -25}
+        - {x: 15, y: -25}
+        - {x: 25, y: -12}
+        - {x: 25, y: 17}
+        - {x: 16, y: 25}
+    outline: []
+  spritePackingTag: character
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

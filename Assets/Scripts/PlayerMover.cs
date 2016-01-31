@@ -17,7 +17,11 @@ public class PlayerMover : MonoBehaviour {
 	public float moveSpeed = 3f;
 	public float gridSize = 1f;
 	private Vector2 _input;
+	private Vector2 _direction = new Vector2(-1, 0);
 	private bool _isMoving = false;
+
+	// Stress
+	public static float _stress = 0.0f;
 
 	// Use this for initialization
 	void Start() {
@@ -41,21 +45,13 @@ public class PlayerMover : MonoBehaviour {
 	void Update() {
 		if (!_isMoving) {
 			if (InputHandler.GetKey("Up")) {
-				_input += new Vector2(0, -1);
-				anim.Play("Back");
-				render.flipX = false;
+				_input = new Vector2(0, -1);
 			} else if (InputHandler.GetKey("Down")) {
-				_input += new Vector2(0, 1);
-				anim.Play("Front");
-				render.flipX = true;
+				_input = new Vector2(0, 1);
 			} else if (InputHandler.GetKey("Left")) {
-				_input += new Vector2(1, 0);
-				anim.Play("Back");
-				render.flipX = true;
+				_input = new Vector2(1, 0);
 			} else if (InputHandler.GetKey("Right")) {
-				_input += new Vector2(-1, 0);
-				anim.Play("Front");
-				render.flipX = false;
+				_input = new Vector2(-1, 0);
 			}
 
 			// Make sure we dont go diagonal
@@ -67,8 +63,33 @@ public class PlayerMover : MonoBehaviour {
 
 			//Move
 			if (_input != Vector2.zero) {
+				_direction = _input;
 				StartCoroutine(move(transform));
 			}
+		}
+
+		//Debug
+		_stress += Time.deltaTime;
+
+		// Animate
+		//Get stress state
+		string stateSuffix = "";
+		if (_stress > 5.0f) {
+			stateSuffix = "Glitch";
+		}
+
+		if (_direction.y == -1) {
+			anim.Play("Back" + stateSuffix);
+			render.flipX = false;
+		} else if (_direction.y == 1) {
+			anim.Play("Front" + stateSuffix);
+			render.flipX = true;
+		} else if (_direction.x == 1) {
+			anim.Play("Back" + stateSuffix);
+			render.flipX = true;
+		} else if (_direction.x == -1) {
+			anim.Play("Front" + stateSuffix);
+			render.flipX = false;
 		}
 	}
 

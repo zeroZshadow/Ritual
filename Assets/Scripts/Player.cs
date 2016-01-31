@@ -50,18 +50,26 @@ public class Player : MonoBehaviour {
 		InputHandler.SetKey("Down", DownKey, KeyCode.None, KeyCode.None, KeyCode.None);
 		InputHandler.SetKey("Left", LeftKey, KeyCode.None, KeyCode.None, KeyCode.None);
 		InputHandler.SetKey("Right", RightKey, KeyCode.None, KeyCode.None, KeyCode.None);
+
+		InputHandler.SetPrimaryKeyAsAxis("JoyUp", "Joy1 Axis 2-", 0, 0.2f);
+		InputHandler.SetPrimaryKeyAsAxis("JoyDown", "Joy1 Axis 2+", 0, 0.2f);
+		InputHandler.SetAxis("Vertical", "JoyUp", "JoyDown");
+		InputHandler.SetPrimaryKeyAsAxis("JoyLeft", "Joy1 Axis 1-", 0, 0.2f);
+		InputHandler.SetPrimaryKeyAsAxis("JoyRight", "Joy1 Axis 1+", 0, 0.2f);
+		InputHandler.SetAxis("Horizontal", "JoyLeft", "JoyRight");
 	}
 
 	// Update is called once per frame
 	void Update() {
+		
 		if (!_isMoving) {
-			if (InputHandler.GetKey("Up")) {
+			if (InputHandler.GetKey("Up") || (InputHandler.GetKey("JoyUp") && InputHandler.GetKey("JoyRight"))) {
 				_input = new Vector2(0, -1);
-			} else if (InputHandler.GetKey("Down")) {
+			} else if (InputHandler.GetKey("Down") || (InputHandler.GetKey("JoyDown") && InputHandler.GetKey("JoyLeft"))) {
 				_input = new Vector2(0, 1);
-			} else if (InputHandler.GetKey("Left")) {
+			} else if (InputHandler.GetKey("Left") || (InputHandler.GetKey("JoyLeft") && InputHandler.GetKey("JoyUp"))) {
 				_input = new Vector2(1, 0);
-			} else if (InputHandler.GetKey("Right")) {
+			} else if (InputHandler.GetKey("Right") || (InputHandler.GetKey("JoyRight") && InputHandler.GetKey("JoyDown"))) {
 				_input = new Vector2(-1, 0);
 			}
 

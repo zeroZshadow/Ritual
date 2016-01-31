@@ -8,12 +8,13 @@ public class Pickupper : MonoBehaviour {
 	public Player player;
 
 	public KeyCode ActionKey;
+	public KeyCode ActionKey2;
 	public LayerMask mask;
 
 	// Use this for initialization
 	void Start () {
 		InputHandler = ConfigurableInput.Instance;
-		InputHandler.SetKey("Action", ActionKey, KeyCode.None, KeyCode.None, KeyCode.None);
+		InputHandler.SetKey("Action", ActionKey, ActionKey2, KeyCode.None, KeyCode.None);
 	}
 	
 	// Update is called once per frame
@@ -62,7 +63,7 @@ public class Pickupper : MonoBehaviour {
 	}
 
 	private bool GetPickupable(out Pickupable pickupable){
-		Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1f);
+		Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1.5f);
 		float closestDistance = float.MaxValue;
 		Pickupable closestPickupable = null;
 

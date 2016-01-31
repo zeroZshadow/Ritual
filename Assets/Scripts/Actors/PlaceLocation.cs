@@ -20,7 +20,9 @@ public class PlaceLocation : OnSequence {
 			spriteRenderer.material = Materials[nextInLine];
 			nextInLine++;
 			if (nextInLine == Pickups.Length){
-				OnSequenceComplete();
+				if (OnSequenceComplete != null){
+					OnSequenceComplete();
+				}
 			}
 			return true;
 		}

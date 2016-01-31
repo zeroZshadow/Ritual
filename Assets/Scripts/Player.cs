@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 		Align
 	}
 
+	private AudioSource audioSource;
 	ConfigurableInput InputHandler;
 
 	public KeyCode UpKey;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
+		audioSource = GetComponent<AudioSource>();
 		InputHandler = ConfigurableInput.Instance;
 		InputHandler.SetKey("Up", UpKey, KeyCode.None, KeyCode.None, KeyCode.None);
 		InputHandler.SetKey("Down", DownKey, KeyCode.None, KeyCode.None, KeyCode.None);
@@ -84,7 +86,9 @@ public class Player : MonoBehaviour {
 			if (_stress >= (stressMinimum + partSize)) {
 				stressMinimum += partSize;
 			}
-
+			if (!audioSource.isPlaying){
+				audioSource.Play();
+			}
 			stateSuffix = "Glitch";
 		} else {
 			// Lower when not stressed, but not below the smallest amount
@@ -92,6 +96,7 @@ public class Player : MonoBehaviour {
 			if (_stress < stressMinimum) {
 				_stress = stressMinimum;
 			}
+			audioSource.Stop();
 		}
 
 		// Visualize stress

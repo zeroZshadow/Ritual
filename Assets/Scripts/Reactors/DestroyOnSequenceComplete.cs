@@ -4,6 +4,7 @@ using System.Collections;
 public class DestroyOnSequenceComplete : MonoBehaviour {
 
 	public OnSequence sequence;
+	public AudioClip soundOnOpen;
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +13,7 @@ public class DestroyOnSequenceComplete : MonoBehaviour {
 
 	void HandleSequenceComplete (){
 		sequence.OnSequenceComplete -= HandleSequenceComplete;
+		SoundPlayer.Instance.Play(soundOnOpen);
 		Destroy(gameObject);
 	}
 	

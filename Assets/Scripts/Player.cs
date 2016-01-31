@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
 	private bool _isMoving = false;
 
 	// Stress
-	public bool stressed = true;
+	public static bool stressed = false;
 	public float stressIncMod = 1.0f;
 	public float stressDecMod = 2.0f;
 	public float stressMax = 100.0f;

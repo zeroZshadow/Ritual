@@ -36,11 +36,9 @@ public class Pickupper : MonoBehaviour {
 	private void TryPlace(){
 
 		Collider[] colliders;
-		colliders = Physics.OverlapBox(this.transform.position + (this.transform.forward * 1f), new Vector3(0.4f, 0.4f, 0.4f), Quaternion.identity, mask);
+		colliders = Physics.OverlapBox(this.transform.position + (playerMover.GetDirection() * 1f), new Vector3(0.4f, 0.4f, 0.4f), Quaternion.identity, mask);
 		PlaceLocation placeLocation = null;
 		float closestDistance = float.MaxValue;
-
-		Debug.Log(colliders.Length);
 
 		foreach (Collider collider in colliders){
 		    float distance = Vector3.Distance(transform.position, collider.transform.position);
@@ -59,7 +57,7 @@ public class Pickupper : MonoBehaviour {
 
 		if (placeLocation == null && colliders.Length == 0){
 			pickedUpObject.transform.parent = null;
-			pickedUpObject.transform.position = this.transform.position + (this.transform.forward * 1f);
+			pickedUpObject.transform.position = this.transform.position + (playerMover.GetDirection()  * 1f);
 			pickedUpObject = null;
 		}
 	}

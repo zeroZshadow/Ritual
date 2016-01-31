@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlaceLocation : MonoBehaviour {
+public class PlaceLocation : OnSequence {
 
 	public Pickupable[] Pickups;
 	public Material[] Materials;
@@ -19,6 +19,9 @@ public class PlaceLocation : MonoBehaviour {
 		if (Pickups[nextInLine] == pickupable){
 			spriteRenderer.material = Materials[nextInLine];
 			nextInLine++;
+			if (nextInLine == Pickups.Length){
+				OnSequenceComplete();
+			}
 			return true;
 		}
 		return false;

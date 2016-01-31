@@ -128,4 +128,8 @@ public class PlayerMover : MonoBehaviour {
 	public bool isMoving(){
 		return _isMoving;
 	}
+
+	public Vector3 GetDirection(){
+		return new Vector3(_direction.x, 0, _direction.y);
+	}
 }
